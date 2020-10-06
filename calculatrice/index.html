@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <title>tutoriel javascript</title>
+</head>
+<title></title>
+<body>
+    <table>
+<tr>
+    <th colspan="4"><input type="text" value="0" id="nombreAffiche"></th>
+</tr>
+        <tr>
+
+            <td><button type="button" onclick="addNum(1)">1</button>
+            </td>
+            <td><button type="button" onclick="addNum(2)">2</button>
+
+            </td>
+            <td><button type="button" onclick="addNum(3)">3</button>
+            </td>
+            <td><button type="button" onclick="addition()">+</button>
+            </td>
+            
+        </tr>
+         <tr>
+            <td><button type="button" onclick="addNum(4)">4</button>
+            </td>
+            <td><button type="button" onclick="addNum(5)">5</button>
+            </td>
+            <td><button type="button" onclick="addNum(6)">6</button>
+            </td>
+            <td><button type="button" onclick="soustraction()">-</button>
+            </td>
+
+            </tr>
+            <tr>
+                <td><button type="button" onclick="addNum(7)">7</button>
+                  </td>  
+                  <td><button type="button" onclick="addNum(8)">8</button>
+                  </td>
+                  <td><button type="button" onclick="addNum(9)">9</button>
+                </td>
+                <td><button type="button" onclick="multiplication()">*</button>
+                </td>
+            </tr>
+       <tr><td colspan="1"><button type="button" onclick="currentOperation()">=</button></td>
+      
+        <td><button type="button" onclick="">0</button>
+       </td>
+       <td>
+
+    <td><button type="button" onclick="division()">/</button>
+       </td>
+
+       
+    </tr>
+    </table>
+
+
+</body>
+<script>
+    var currentVal=0;
+    var previousVal=0;
+    var currentOperation = null
+    
+    function sous(){
+        currentVal=previousVal-currentVal
+        previousVal=0
+        document.getElementById("nombreAffiche").value=currentVal
+        currentOperation=null
+    }
+
+    function add(){
+        currentVal=currentVal+previousVal;
+        previousVal=0
+        document.getElementById("nombreAffiche").value=currentVal 
+        currentOperation=null
+
+    }
+    function soustraction(){
+        previousVal=currentVal;
+        currentVal=0;
+        document.getElementById("nombreAffiche").value=currentVal
+        currentOperation=sous
+    }
+    
+    function addition(){
+        previousVal=currentVal;
+        currentVal=0;
+        document.getElementById("nombreAffiche").value=currentVal
+        currentOperation=add
+
+    }
+    
+    function addNum(val){
+
+        currentVal=currentVal*10+val;
+        document.getElementById("nombreAffiche").value=currentVal
+    }
+
+     function multi(){
+            currentVal=currentVal*previousVal;
+            previousVal=0
+            document.getElementById("nombreAffiche").value=currentVal
+            currentOperation=null
+    }
+
+    function multiplication(){
+    previousVal=currentVal;
+    currentVal=0
+    document.getElementById("nombreAffiche").value=currentVal
+    currentOperation=multi
+    }
+    
+    function div(){
+        if(currentVal==0){
+            document.getElementById("nombreAffiche").value="divsion par zero impossible"
+        }else{
+            currentVal=previousVal/currentVal
+            document.getElementById("nombreAffiche").value=currentVal
+        }
+        
+        previousVal=0
+
+    }
+
+    function division(){
+        previousVal=currentVal
+        currentVal=0
+        document.getElementById("nombreAffiche").value=currentVal
+        currentOperation=div
+
+    }
+</script>
+
+</html>
